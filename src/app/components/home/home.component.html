@@ -3,3 +3,16 @@
     {{country.name}}: {{country.alpha3Code}}
   </li>
 </ul> test -->
+
+<div class="card-columns">
+    <div class="card" *ngFor="let song of newSongs; let i = index" >
+      <img class="card-img-top" [src]="song.images[0].url" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{song.name}}</h5>
+        <p class="card-text">
+            <span class="badge badge-pill badge-primary" *ngFor="let artists of song.artists">{{artists.name}}</span>
+        </p>
+      </div>
+    </div>
+</div>
+
