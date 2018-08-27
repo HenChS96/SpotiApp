@@ -12,16 +12,15 @@ export class ArtistComponent implements OnInit {
 
   artist: any = {};
 
+  loading: boolean;
+
   constructor( private activetdRoute: ActivatedRoute, private spotify: SpotifyService ) { 
 
-    this.activetdRoute.params.subscribe( params => {
-      console.log(params['id']);
-    });
-
+    this.loading = true;
 
     this.activetdRoute.params.subscribe( params => {
       this.getArtist( params['id'] );
-    })
+    });
     
   }
 
@@ -30,7 +29,8 @@ export class ArtistComponent implements OnInit {
     this.spotify.getArtist( id ).subscribe( artist => {
       console.log(artist);
       this.artist = artist;
-    })
+      this.loading = false;
+    });
 
   }
 

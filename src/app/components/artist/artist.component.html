@@ -1,10 +1,21 @@
-<div class="row">
+<app-loading *ngIf="loading" class="m-5"></app-loading>
+
+<div class="row animated fadeIn" *ngIf="!loading">
 
   <div class="col-2">
-    <img [src]="" alt="">
+    <img [src]="artist.images | noimage" class="img-thumbnail img-circle">
   </div>
-  <div class="col"></div>
-  <div class="col-4"></div>
+  <div class="col">
+    <h3>{{artist.name}}</h3>
+    <p>
+      <a [href]="artist.external_urls.spotify" target="_blank">View Artist Page</a>
+    </p>
+  </div>
+  <div class="col-4 text-right">
+
+    <button class="btn btn-outline-danger" [routerLink]="['/search']">Back</button>
+
+  </div>
   
 
 
