@@ -11,6 +11,7 @@ export class ArtistComponent implements OnInit {
 
 
   artist: any = {};
+  topTracks: any[] = [];
 
   loading: boolean;
 
@@ -20,6 +21,7 @@ export class ArtistComponent implements OnInit {
 
     this.activetdRoute.params.subscribe( params => {
       this.getArtist( params['id'] );
+      this.getTopTracks( params['id'] );
     });
     
   }
@@ -32,6 +34,13 @@ export class ArtistComponent implements OnInit {
       this.loading = false;
     });
 
+  }
+
+  getTopTracks( id: string ){
+    this.spotify.getTopTracks( id ).subscribe( topTracks => {
+      console.log(topTracks);
+      this.topTracks = topTracks;
+    })
   }
 
   ngOnInit() {
