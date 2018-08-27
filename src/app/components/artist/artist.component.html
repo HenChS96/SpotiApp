@@ -36,7 +36,10 @@
           <td><img [src]="top.album.images | noimage" class="img-thumb"></td>
           <td>{{ top.album.name }}</td>
           <td>{{ top.name }}</td>
-          <td><audio [src]="top.preview_url" controls></audio></td>
+          <td>
+              <iframe [src]="top.uri | domseguro " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </td>
+          <!--<td><audio [src]="top.preview_url" controls></audio></td>-->
         </tr>
       </tbody>
 
