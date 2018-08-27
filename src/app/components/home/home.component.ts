@@ -14,9 +14,14 @@ export class HomeComponent implements OnInit {
 
   loading: boolean;
 
+  error: boolean;
+
+  errorName: string;
+
   constructor( private spotify: SpotifyService ) { // private http: HttpClient (insde the constructor like injection this is a test)
 
     this.loading = true;
+    this.error = false;
 
    /* this.http.get('https://restcountries.eu/rest/v2/lang/es').subscribe( (resp:any) => { //here you put the variable as any to match the global variable (test)
       console.log(resp); // you subscribe to the get methos and the things you get would be safe on the resp variable (test)
@@ -27,6 +32,12 @@ export class HomeComponent implements OnInit {
       console.log(data);
       this.newSongs = data;
       this.loading = false;
+    }, 
+    ( errorService ) => {
+      this.loading = false;
+      this.error = true;
+      console.log( errorService );
+      this.errorName = errorService.error.error.message;
     });
 
   }
